@@ -77,11 +77,6 @@ RUN set -ex; \
     rm wordpress.tar.gz; \
     chown -R www-data:www-data /usr/src/wordpress
 
-COPY docker-entrypoint.sh /usr/local/bin/
-
 RUN apt-get update;
 RUN apt-get install -y --no-install-recommends iptables;
 RUN rm -rf /var/lib/apt/lists/*;
-
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["apache2-foreground"]

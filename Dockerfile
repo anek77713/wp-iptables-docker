@@ -80,3 +80,8 @@ RUN set -ex; \
 RUN apt-get update;
 RUN apt-get install -y --no-install-recommends iptables;
 RUN rm -rf /var/lib/apt/lists/*;
+
+COPY docker-entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
